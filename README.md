@@ -6,6 +6,8 @@ handwritten IL, not C# compiled or decompiled into IL.
 
 USN rescan cache kind of works, more work needed.
 
+![FolderMap screenshot](Screen1.png)
+
 ## Build and run
 
 Requires **64-bit Windows and .NET Framework 4.8 or later**. No NuGet packages,
