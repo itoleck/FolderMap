@@ -1,0 +1,46 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Build FolderMap (MSIL x64)",
+			"type": "process",
+			"command": "${env:WINDIR}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}\\build.ps1"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			}
+		},
+		{
+			"label": "Test FolderMap",
+			"type": "process",
+			"command": "${env:WINDIR}\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+			"args": [
+				"-NoProfile",
+				"-STA",
+				"-ExecutionPolicy",
+				"Bypass",
+				"-File",
+				"${workspaceFolder}\\tests\\run-tests.ps1"
+			],
+			"dependsOn": "Build FolderMap (MSIL x64)",
+			"problemMatcher": [],
+			"group": "test"
+		},
+		{
+			"label": "Run FolderMap",
+			"type": "process",
+			"command": "${workspaceFolder}\\bin\\FolderMap.exe",
+			"dependsOn": "Build FolderMap (MSIL x64)",
+			"problemMatcher": []
+		}
+	]
+}
